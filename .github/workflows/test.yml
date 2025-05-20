@@ -1,0 +1,35 @@
+name: Test + Build + Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fer checkout del codi
+        uses: actions/checkout@v3
+
+      - name: Instal·lar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instal·lar dependències
+        run: npm install
+
+      # Linter
+      - name: Anàlisi amb ESLint
+        run: npm run lint
+
+      # Build
+      - name: Build del projecte
+        run: npm run build
+
+      # Test
+      - name: Executar tests
+        run: npm test
