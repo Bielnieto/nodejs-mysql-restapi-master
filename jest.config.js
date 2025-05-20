@@ -1,5 +1,6 @@
+
 /** @type {import('jest').Config} */
-export default {
+module.exports = {
   verbose: true,
   testEnvironment: "node",
   coveragePathIgnorePatterns: ["/node_modules/"],
