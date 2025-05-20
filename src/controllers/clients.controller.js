@@ -19,7 +19,7 @@ export const getClients = async (req, res) => {
     }
 
     res.status(200).json(rows);
-  } catch (error) {
+  } catch {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };
@@ -34,7 +34,7 @@ export const getClient = async (req, res) => {
     }
 
     res.status(200).json(rows[0]);
-  } catch (error) {
+  } catch {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };
@@ -49,7 +49,7 @@ export const deleteClient = async (req, res) => {
     }
 
     res.sendStatus(204);
-  } catch (error) {
+  } catch {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };
@@ -63,7 +63,7 @@ export const createClient = async (req, res) => {
       [nom, cognoms, telefon, correu_electronic, desti_de_viatge]
     );
     res.status(201).json({ id: rows.insertId, ...req.body });
-  } catch (error) {
+  } catch {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };
@@ -85,7 +85,7 @@ export const updateClient = async (req, res) => {
     const [rows] = await pool.query("SELECT * FROM clients WHERE id = ?", [id]);
 
     res.status(200).json(rows[0]);
-  } catch (error) {
+  } catch {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };

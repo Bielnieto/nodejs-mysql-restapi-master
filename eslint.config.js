@@ -1,9 +1,10 @@
-const js = require("@eslint/js");
-const globals = require("globals");
-const { defineConfig } = require("eslint/config");
+import js from "@eslint/js";
+import globals from "globals";
+import { defineConfig } from "eslint/config";
 
-module.exports = defineConfig([
+export default defineConfig([
   { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"] },
-  { files: ["**/*.js"], languageOptions: { sourceType: "commonjs" } },
-  { files: ["**/*.{js,mjs,cjs}"], languageOptions: { globals: globals.browser } },
+  { files: ["**/*.js"], languageOptions: { sourceType: "module", globals: { process: "readonly", require: "readonly", module: "readonly" } } },
+  { files: ["src/**/*.js"], languageOptions: { globals: globals.node } },
+  { files: ["tests/**/*.js", "__tests__/**/*.js"], languageOptions: { globals: { ...globals.node, describe: "readonly", it: "readonly", expect: "readonly", afterAll: "readonly", beforeAll: "readonly", test: "readonly" } } },
 ]);
