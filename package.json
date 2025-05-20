@@ -9,7 +9,7 @@
     "start": "node src/index.js",
     "build": "echo 'Simulant build exitós'",
     "lint": "eslint .",
-    "test": "jest",
+    "test": "jest --config jest.config.cjs",
     "pretest": "cross-env NODE_ENV=test jest --clearCache"
   },
   "keywords": [],
