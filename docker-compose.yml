@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql
+    container_name: agencia_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: agencia_viatges
+      MYSQL_USER: alex
+      MYSQL_PASSWORD: alexpassword
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/database.sql:/docker-entrypoint-initdb.d/database.sql

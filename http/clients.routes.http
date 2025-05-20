@@ -1,0 +1,29 @@
+### Get all clients
+GET http://localhost:3000/api/clients
+
+### Create a new client
+POST http://localhost:3000/api/clients
+Content-Type: application/json
+
+{
+  "nom": "Alex",
+  "cognoms": "Garcia",
+  "telefon": "123456789",
+  "correu_electronic": "alex@example.com",
+  "desti_de_viatge": "Paris"
+}
+
+### Get client by id
+GET http://localhost:3000/api/clients/2
+
+### Update a client
+PATCH http://localhost:3000/api/clients/2
+Content-Type: application/json
+
+{
+  "nom": "Alex",
+  "desti_de_viatge": "London"
+}
+
+### Delete a client
+DELETE http://localhost:3000/api/clients/2
