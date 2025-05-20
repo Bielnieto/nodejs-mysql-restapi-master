@@ -1,0 +1,23 @@
+name: Desplegament a Vercel
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del codi
+        uses: actions/checkout@v3
+
+      - name: Instal·lar Vercel CLI
+        run: npm install -g vercel
+
+      - name: Desplegar a Vercel
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
